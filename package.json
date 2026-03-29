@@ -1,0 +1,36 @@
+{
+  "name": "agentic-code-assistant",
+  "version": "1.0.0",
+  "description": "A simplified agentic code assistant inspired by Cursor",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "code",
+    "assistant",
+    "cursor"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "commander": "^11.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "lowdb": "^5.1.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.24.0",
+    "ws": "^8.14.2",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1"
+  }
+}
