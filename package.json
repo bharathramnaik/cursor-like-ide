@@ -1,27 +1,36 @@
 {
   "name": "agentic-code-assistant",
   "version": "1.0.0",
-  "description": "A simplified agentic code assistant inspired by Cursor",
+  "description": "A Cursor-like AI-powered code editor with agentic workflow",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "test:verbose": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+    "lint": "echo 'No linter configured'",
+    "build": "echo 'No build step required for CLI tool'"
   },
-  "keywords": [
-    "ai",
-    "agent",
-    "code",
-    "assistant",
-    "cursor"
-  ],
-  "author": "Developer",
+  "keywords": ["ai", "agent", "code", "assistant", "cursor", "ide", "llm", "gpt", "claude"],
+  "author": "Bharath Ram Naiks <bharathramnaik@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bharathramnaik/cursor-like-ide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bharathramnaik/cursor-like-ide/issues"
+  },
+  "homepage": "https://github.com/bharathramnaik/cursor-like-ide#readme",
   "dependencies": {
     "chokidar": "^3.5.3",
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "glob": "^10.3.10",
     "lodash": "^4.17.21",
     "lowdb": "^5.1.0",
     "node-fetch": "^3.3.2",
@@ -32,5 +41,13 @@
   "devDependencies": {
     "jest": "^29.6.2",
     "nodemon": "^3.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js", "**/tests/**/*.spec.js"],
+    "collectCoverageFrom": ["src/**/*.js", "!src/**/*.test.js"],
+    "coverageDirectory": "coverage",
+    "verbose": true,
+    "testTimeout": 10000
   }
 }

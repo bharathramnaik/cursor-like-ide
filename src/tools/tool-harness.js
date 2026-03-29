@@ -9,6 +9,22 @@ import { glob as globSync } from 'glob';
 const execAsync = promisify(exec);
 const globAsync = promisify(glob);
 
+export class ToolResult {
+  constructor(success, output, error = null) {
+    this.success = success;
+    this.output = output;
+    this.error = error;
+  }
+  
+  static success(output) {
+    return new ToolResult(true, output);
+  }
+  
+  static error(error) {
+    return new ToolResult(false, null, error);
+  }
+}
+
 export class ToolHarness {
   constructor() {
     this.tools = new Map();

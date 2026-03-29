@@ -183,11 +183,16 @@ export class MCPManager {
               return false; // Skip files we can't read
             }
           })
-          .map(fileInfo => ({
-            ...fileInfo,
-            relevance: this.calculateRelevance(await this.getFileContent(fileInfo.path), query)
+          .map(async fileInfo => {
+            const content = await this.getFileContent(fileInfo.path);
+            return {
+              ...fileInfo,
+              relevance: this.calculateRelevance(content, query)
+            };
           }))
-          .sort((a, b) => b.relevance - a.relevance)
+      );
+      const filesWithRelevance = await Promise.all(promiseChain);
+      return filesWithRelevance.sort((a, b) => b.relevance - a.relevance);
       );
     }
     
